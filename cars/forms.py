@@ -14,3 +14,14 @@ class CarCreateForm(CarBaseForm):
         super().__init__(*args, **kwargs)
         # Add a placeholder for the image_url field
         self.fields['image_url'].widget.attrs['placeholder'] = "https://..."
+
+
+class CarEditForm(CarBaseForm):
+    pass
+
+
+class CarDeleteForm(CarBaseForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['readonly'] = True
