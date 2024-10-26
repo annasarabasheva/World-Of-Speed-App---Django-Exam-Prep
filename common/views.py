@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from profiles.models import Profile
+
+
+def home(request):
+    profile = Profile.objects.first()
+    context = {
+        "profile": profile
+    }
+    return render(request, 'index.html', context)
